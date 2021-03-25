@@ -1,0 +1,15 @@
+.Container {
+  width: 120px;
+  min-height: 240px;
+  max-height: 480px;
+  background: grey;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    text-align: center;
+    color: aliceblue;
+  }
+}

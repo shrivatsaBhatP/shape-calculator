@@ -19,7 +19,7 @@ export const initialState = {
   },
   step3: {
     id: 12,
-    stepName: "Insert your values",
+    stepName: "Your result",
     submitValue: "Start over",
     description: (type = "unknown", value: any) => {
       let measures = [];

@@ -145,9 +145,10 @@ const StepThree: React.FC<any> = ({ type, value }) => {
 
       break;
   }
+
   return (
     <div className={styles.ResultContainer}>
-      <p>The Area is {result}</p>
+      <p>The Area is {result.toFixed(3)}</p>
     </div>
   );
 };

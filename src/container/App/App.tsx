@@ -1,4 +1,3 @@
-import React from "react";
 import AdVerticalBanner from "../../components/AdVerticalBanner/AdVerticalBanner";
 import Header from "../../components/Header";
 import HomeDescriptionBlock from "../../components/HomeDescriptionBlock";

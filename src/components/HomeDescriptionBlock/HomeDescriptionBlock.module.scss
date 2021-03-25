@@ -1,6 +1,9 @@
 .DescriptionContainer {
-  max-width: 40%;
+  width: 40%;
   h1 {
     font-weight: 400;
+  }
+  @media (max-width: 720px) {
+    width: 100%;
   }
 }

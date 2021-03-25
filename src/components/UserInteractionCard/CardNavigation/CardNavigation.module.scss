@@ -1,0 +1,20 @@
+.CardNavigation {
+  margin-bottom: 1rem;
+
+  span {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    color: rgb(53, 53, 53);
+
+    p {
+      display: inline;
+      margin: 0;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        color: black;
+      }
+    }
+  }
+}

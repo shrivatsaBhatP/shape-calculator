@@ -4,8 +4,6 @@ import HomeDescriptionBlock from "../../components/HomeDescriptionBlock";
 import UserInteractionCard from "../../components/UserInteractionCard";
 import styles from "./App.module.scss";
 
-import { Solids } from "../../soilds/Solids";
-
 function App() {
   return (
     <div className={styles.App}>
@@ -15,7 +13,6 @@ function App() {
         <UserInteractionCard />
         <AdVerticalBanner />
       </section>
-      <Solids />
     </div>
   );
 }

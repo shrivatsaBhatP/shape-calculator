@@ -1,10 +1,10 @@
-import { ButtonInterface } from "../../common/interface";
-import styles from "./Button.module.scss";
+import { ButtonInterface } from '../../common/interface';
+import styles from './Button.module.scss';
 
 const Button: React.FC<ButtonInterface> = ({
   children,
   onClick = () => null,
-  type = "button",
+  type = 'button',
 }) => {
   return (
     <button type={type} onClick={onClick} className={styles.Button}>

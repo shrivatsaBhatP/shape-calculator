@@ -1,1 +1,1 @@
-export { default } from "./UserInteractionCard";
+export { default } from './UserInteractionCard';

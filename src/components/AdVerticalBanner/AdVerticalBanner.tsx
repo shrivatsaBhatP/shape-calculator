@@ -1,4 +1,4 @@
-import styles from "./AdVerticalBanner.module.scss";
+import styles from './AdVerticalBanner.module.scss';
 
 function AdVerticalBanner() {
   return (

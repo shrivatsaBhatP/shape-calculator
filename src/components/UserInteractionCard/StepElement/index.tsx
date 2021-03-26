@@ -1,1 +1,1 @@
-export { default } from "./StepElement";
+export { default } from './StepElement';

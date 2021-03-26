@@ -1,6 +1,6 @@
-import styles from "./CardNavigation.module.scss";
-import Button from "../../Button";
-import { CardNavigationInterface } from "../../../common/interface";
+import styles from './CardNavigation.module.scss';
+import Button from '../../Button';
+import { CardNavigationInterface } from '../../../common/interface';
 
 const CardNavigation = ({
   onCancel,
@@ -9,7 +9,9 @@ const CardNavigation = ({
 }: CardNavigationInterface) => {
   return (
     <div className={styles.CardNavigation}>
-      <Button onClick={onClickNext}>{submitLabel}</Button>
+      <Button onClick={onClickNext} type="submit">
+        {submitLabel}
+      </Button>
       <span>
         or <p onClick={onCancel}>Cancel</p>
       </span>

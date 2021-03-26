@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./HomeDescriptionBlock.module.scss";
+import React from 'react';
+import styles from './HomeDescriptionBlock.module.scss';
 
 const HomeDescriptionBlock: React.FC = () => {
   return (

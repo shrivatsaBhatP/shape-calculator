@@ -1,5 +1,5 @@
-import styles from "./StepDetail.module.scss";
-import { StepDetailInterface } from "../../../common/interface";
+import styles from './StepDetail.module.scss';
+import { StepDetailInterface } from '../../../common/interface';
 
 const StepDetail = ({
   stepNumber,
@@ -7,7 +7,7 @@ const StepDetail = ({
   description,
 }: StepDetailInterface) => {
   function createMarkup() {
-    const string = description ? description : "";
+    const string = description ? description : '';
     return { __html: string };
   }
   return (

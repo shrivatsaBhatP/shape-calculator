@@ -1,16 +1,31 @@
-import styles from "./StepMediator.module.scss";
-import StepElement from "../StepElement";
-import { initialState, initialValue } from "../../../common/defaultValue";
+// import styles from "./StepMediator.module.scss";
+import StepElement from '../StepElement';
+import { initialState, initialValue } from '../../../common/defaultValue';
+import { StepMediatorInterface } from '../../../common/interface';
+// import { PayloadType, InitialValueType } from '../../../common/type';
+import { defaultPayload } from '../../../common/defaultValue';
 
-const StepMediator = ({ step = 1, setStep, value, setValue }: any) => {
-  //@ts-ignore
+const StepMediator: React.FC<StepMediatorInterface> = ({
+  step = 1,
+  setStep,
+  value,
+  setValue,
+}) => {
+  // @ts-ignore
   const stepDetail = initialState[`step${step}`];
+  const type = value?.type !== undefined ? value?.type : '';
+  const payload =
+    value?.payload !== undefined ? value?.payload : defaultPayload;
+  // @ts-ignore
+  const description = stepDetail.description(type, payload[type]);
 
-  const handleNextClick = (e: any) => {
-    if (isValidValue(step, value)) return;
+  const handleNextClick = () => {
+    if (isValidValue(step, type, value.payload)) return;
 
     let newStep = step + 1;
-    setStep(newStep > 3 ? (newStep = 1) && setValue(initialValue) : newStep);
+    newStep === 4 && setValue(initialValue);
+    newStep > 3 && (newStep = 1);
+    setStep(newStep);
   };
 
   const handleCancel = () => {
@@ -25,10 +40,7 @@ const StepMediator = ({ step = 1, setStep, value, setValue }: any) => {
         setValue={setValue}
         step={step}
         stepName={stepDetail.stepName}
-        description={stepDetail.description(
-          value.type,
-          value.payload[value.type]
-        )}
+        description={description}
         onClickNext={handleNextClick}
         onCancel={handleCancel}
         submitLabel={stepDetail?.submitValue}
@@ -39,13 +51,11 @@ const StepMediator = ({ step = 1, setStep, value, setValue }: any) => {
 
 export default StepMediator;
 
-function isValidValue(step: number, value: any) {
-  const isNotEmpty = (ele: any) => ele[1] === "";
-  if (step === 1 && !value?.type) return true;
-  if (
-    step === 2 &&
-    Object.entries(value?.payload[value?.type]).every(isNotEmpty)
-  )
-    return true;
+function isValidValue(step: number, type: string, value: any) {
+  const isNotEmpty = (ele: any) => ele[1] === '';
+
+  if (step === 1 && !type) return true;
+  if (step === 2 && Object.entries(value[type]).every(isNotEmpty)) return true;
+
   return false;
 }

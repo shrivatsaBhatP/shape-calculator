@@ -1,8 +1,13 @@
-import styles from "./Steps.module.scss";
-import RadioButton from "../../Button/Radio";
-import { SelectionOptionType } from "../../../common/interface";
+import styles from './Steps.module.scss';
+import RadioButton from '../../Button/Radio';
+import { SelectionOptionType, PayloadType } from '../../../common/type';
+import {
+  StepsOneInterface,
+  StepsTwoInterface,
+  StepsThreeInterface,
+} from '../../../common/interface';
 
-const StepOne: React.FC<any> = ({
+const StepOne: React.FC<StepsOneInterface> = ({
   handleOptionChange,
   selectionOptions,
   selectedOption,
@@ -25,11 +30,12 @@ const StepOne: React.FC<any> = ({
   );
 };
 
-const StepTwo: React.FC<any> = ({ type, value, onChange }) => {
-  const handleOnChange = (e: any) => {
-    let newPayload = { ...value.payload };
+const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let newPayload: PayloadType = { ...value.payload };
     newPayload = {
       ...newPayload,
+      //@ts-ignore
       [type]: { ...newPayload[type], [e.target?.name]: e.target?.value },
     };
 
@@ -44,12 +50,12 @@ const StepTwo: React.FC<any> = ({ type, value, onChange }) => {
         type="number"
         placeholder="text"
         onChange={handleOnChange}
-        value={value.payload["circle"].diameter}
+        value={value.payload['circle'].diameter}
       />
     </div>
   );
 
-  if (type === "rectangle") {
+  if (type === 'rectangle') {
     InputBody = (
       <>
         <div className={styles.Container}>
@@ -59,7 +65,7 @@ const StepTwo: React.FC<any> = ({ type, value, onChange }) => {
             type="number"
             placeholder="text"
             onChange={handleOnChange}
-            value={value.payload["rectangle"].length}
+            value={value.payload['rectangle'].length}
           />
         </div>
         <div className={styles.Container}>
@@ -69,14 +75,14 @@ const StepTwo: React.FC<any> = ({ type, value, onChange }) => {
             type="number"
             placeholder="text"
             onChange={handleOnChange}
-            value={value.payload["rectangle"].breadth}
+            value={value.payload['rectangle'].breadth}
           />
         </div>
       </>
     );
   }
 
-  if (type === "square") {
+  if (type === 'square') {
     InputBody = (
       <>
         <div className={styles.Container}>
@@ -86,14 +92,14 @@ const StepTwo: React.FC<any> = ({ type, value, onChange }) => {
             type="number"
             placeholder="text"
             onChange={handleOnChange}
-            value={value.payload["square"].length}
+            value={value.payload['square'].length}
           />
         </div>
       </>
     );
   }
 
-  if (type === "ellipse") {
+  if (type === 'ellipse') {
     InputBody = (
       <>
         <div className={styles.Container}>
@@ -103,7 +109,7 @@ const StepTwo: React.FC<any> = ({ type, value, onChange }) => {
             type="number"
             placeholder="text"
             onChange={handleOnChange}
-            value={value.payload["ellipse"].axisA}
+            value={value.payload['ellipse'].axisA}
           />
         </div>
         <div className={styles.Container}>
@@ -113,7 +119,7 @@ const StepTwo: React.FC<any> = ({ type, value, onChange }) => {
             type="number"
             placeholder="text"
             onChange={handleOnChange}
-            value={value.payload["ellipse"].axisB}
+            value={value.payload['ellipse'].axisB}
           />
         </div>
       </>
@@ -122,26 +128,26 @@ const StepTwo: React.FC<any> = ({ type, value, onChange }) => {
   return <>{InputBody}</>;
 };
 
-const StepThree: React.FC<any> = ({ type, value }) => {
+const StepThree: React.FC<StepsThreeInterface> = ({ type, value }) => {
   let result = 0;
   switch (type) {
-    case "rectangle":
-      result = value["rectangle"].length * value["rectangle"].breadth;
+    case 'rectangle':
+      result = value['rectangle'].length * value['rectangle'].breadth;
 
       break;
-    case "square":
-      result = value["square"].length * value["square"].length;
+    case 'square':
+      result = value['square'].length * value['square'].length;
 
       break;
-    case "circle":
+    case 'circle':
       result =
         Math.PI *
-        (value["circle"].diameter / 2) *
-        (value["circle"].diameter / 2);
+        (value['circle'].diameter / 2) *
+        (value['circle'].diameter / 2);
 
       break;
-    case "ellipse":
-      result = Math.PI * value["ellipse"].axisA * value["ellipse"].axisB;
+    case 'ellipse':
+      result = Math.PI * value['ellipse'].axisA * value['ellipse'].axisB;
 
       break;
   }

@@ -1,8 +1,9 @@
-import styles from "./StepElement.module.scss";
-import { StepOne, StepTwo, StepThree } from "../Steps";
-import StepDetail from "../StepDetail";
-import CardNavigation from "../CardNavigation";
-import { selectionOptions } from "../../../common/defaultValue";
+import styles from './StepElement.module.scss';
+import { StepOne, StepTwo, StepThree } from '../Steps';
+import StepDetail from '../StepDetail';
+import CardNavigation from '../CardNavigation';
+import { selectionOptions } from '../../../common/defaultValue';
+import { StepElementInterface } from '../../../common/interface';
 
 const StepElement = ({
   value,
@@ -13,15 +14,14 @@ const StepElement = ({
   description,
   onClickNext,
   onCancel,
-}: any) => {
-  const handleOptionChange = (e: any) => {
+}: StepElementInterface) => {
+  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setValue({ ...value, type: newValue });
   };
 
   let body = (
     <StepOne
-      handleSubmit={() => {}}
       handleOptionChange={handleOptionChange}
       selectionOptions={selectionOptions}
       selectedOption={value?.type}
@@ -29,15 +29,7 @@ const StepElement = ({
   );
 
   if (step === 2) {
-    body = (
-      <StepTwo
-        type={value.type}
-        onChange={(e: any) => {
-          setValue(e);
-        }}
-        value={value}
-      />
-    );
+    body = <StepTwo type={value.type} onChange={setValue} value={value} />;
   }
 
   if (step === 3) {
@@ -54,8 +46,7 @@ const StepElement = ({
         className={styles.CardBody}
         onSubmit={(e) => {
           e.preventDefault();
-        }}
-      >
+        }}>
         {body}
       </form>
       <CardNavigation

@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import styles from "./RadioButton.module.scss";
+import styles from './RadioButton.module.scss';
 
-import { RadioButtonInterface } from "../../../common/interface";
+import { RadioButtonInterface } from '../../../common/interface';
 
 const RadioButton: React.FC<RadioButtonInterface> = ({
   label,

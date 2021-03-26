@@ -1,1 +1,1 @@
-export { default } from "./HomeDescriptionBlock";
+export { default } from './HomeDescriptionBlock';

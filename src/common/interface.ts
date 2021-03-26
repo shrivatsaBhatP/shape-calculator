@@ -1,3 +1,5 @@
+import { InitialValueType, SelectionOptionType, PayloadType } from './type';
+
 export interface StepDetailInterface {
   stepNumber: number | undefined;
   stepName: string | undefined;
@@ -7,7 +9,7 @@ export interface StepDetailInterface {
 export interface ButtonInterface {
   children: React.ReactChild | React.ReactChild[] | React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-  type?: "button" | "submit" | "reset" | undefined;
+  type?: 'button' | 'submit' | 'reset' | undefined;
 }
 
 export interface RadioButtonInterface {
@@ -25,8 +27,39 @@ export interface CardNavigationInterface {
   submitLabel: string | undefined;
 }
 
-export type SelectionOptionType = {
-  id: number | string;
-  value: string;
-  label: string;
-};
+export interface StepMediatorInterface {
+  step: number;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+  value: InitialValueType;
+  setValue: React.Dispatch<React.SetStateAction<InitialValueType>>;
+}
+
+export interface StepElementInterface {
+  step: number;
+  value: InitialValueType;
+  setValue: React.Dispatch<React.SetStateAction<InitialValueType>>;
+  stepName: string;
+  description: string;
+  onClickNext: () => void;
+  onCancel: () => void;
+  submitLabel: string;
+}
+
+export interface StepsOneInterface {
+  selectedOption?: string;
+  selectionOptions: SelectionOptionType[];
+  handleOptionChange?: React.ChangeEventHandler<HTMLInputElement>;
+}
+
+export interface StepsTwoInterface {
+  type?: string;
+  value: InitialValueType;
+  onChange: (
+    e: InitialValueType
+  ) => void | React.Dispatch<React.SetStateAction<InitialValueType>>;
+}
+
+export interface StepsThreeInterface {
+  type?: string;
+  value: PayloadType;
+}

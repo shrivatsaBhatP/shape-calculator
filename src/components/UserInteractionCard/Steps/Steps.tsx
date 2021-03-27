@@ -1,5 +1,5 @@
 import styles from './Steps.module.scss';
-import RadioButton from '../../Button/Radio';
+import RadioButton from '../../RadioButton';
 import { SelectionOptionType, PayloadType } from '../../../common/type';
 import {
   StepsOneInterface,

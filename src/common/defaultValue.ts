@@ -40,19 +40,14 @@ export const selectionOptions = [
   { id: 4, value: 'ellipse', label: 'Ellipse' },
 ];
 
-export const initialValue = {
-  type: undefined,
-  payload: {
-    rectangle: { length: 0, breadth: 0 },
-    circle: { diameter: 0 },
-    square: { length: 0 },
-    ellipse: { axisA: 0, axisB: 0 },
-  },
-};
-
 export const defaultPayload = {
   rectangle: { length: 0, breadth: 0 },
   circle: { diameter: 0 },
   square: { length: 0 },
   ellipse: { axisA: 0, axisB: 0 },
+};
+
+export const initialValue = {
+  type: undefined,
+  payload: defaultPayload,
 };

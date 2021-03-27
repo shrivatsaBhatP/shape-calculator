@@ -1,40 +1,44 @@
-export type InitialStateType = {
-  step1: {
-    id: number;
-    stepName: string;
-    submitValue: string;
-    description: (type: string | undefined, value: any) => string;
-  };
-  step2: {
-    id: number;
-    stepName: string;
-    submitValue: string;
-    description: (type: string | undefined, value: any) => string;
-  };
-  step3: {
-    id: number;
+import { defaultPayload } from './defaultValue';
 
-    stepName: string;
-    submitValue: string;
-    description: (type: string | undefined, value: any) => string;
-  };
+export type StepDetailType = {
+  id: number;
+  stepName: string;
+  submitValue: string;
+  description: (type: string | undefined, value: any) => string;
 };
 
+type initialState = {
+  step1: StepDetailType;
+  step2: StepDetailType;
+  step3: StepDetailType;
+};
+
+export type InitialStateType = initialState;
+
+const reactangleValue = { length: 0, breadth: 0 };
+type RectangleData = typeof reactangleValue;
+
+const circleValue = {
+  diameter: 0,
+};
+type CircleData = typeof circleValue;
+
+const squareValue = {
+  length: 0,
+};
+type SquareData = typeof squareValue;
+
+const ellipseValue = {
+  axisA: 0,
+  axisB: 0,
+};
+type EllipseData = typeof ellipseValue;
+
 export type PayloadType = {
-  rectangle: {
-    length: number;
-    breadth: number;
-  };
-  circle: {
-    diameter: number;
-  };
-  square: {
-    length: number;
-  };
-  ellipse: {
-    axisA: number;
-    axisB: number;
-  };
+  rectangle: RectangleData;
+  circle: CircleData;
+  square: SquareData;
+  ellipse: EllipseData;
 };
 
 export type InitialValueType = {

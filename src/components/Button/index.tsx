@@ -1,13 +1,17 @@
-import { ButtonInterface } from '../../common/interface';
+import { ButtonProps } from '../../common/interface';
 import styles from './Button.module.scss';
 
-const Button: React.FC<ButtonInterface> = ({
+const Button: React.FC<ButtonProps> = ({
   children,
-  onClick = () => null,
-  type = 'button',
+  btnStyle = 'primary',
+  backgroundColor,
+  ...props
 }) => {
   return (
-    <button type={type} onClick={onClick} className={styles.Button}>
+    <button
+      className={[styles.Button, styles[btnStyle]].join(' ')}
+      style={{ backgroundColor }}
+      {...props}>
       {children}
     </button>
   );

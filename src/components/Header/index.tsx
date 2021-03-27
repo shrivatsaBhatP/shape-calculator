@@ -1,10 +1,11 @@
 import React from 'react';
+import Text from '../Text';
 import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
   return (
     <div className={styles.HeaderContainer}>
-      <h1>Shape Calculator</h1>
+      <Text type="heading">Shape Calculator</Text>
     </div>
   );
 };

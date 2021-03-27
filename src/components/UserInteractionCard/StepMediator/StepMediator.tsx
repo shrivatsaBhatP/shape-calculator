@@ -2,7 +2,7 @@
 import StepElement from '../StepElement';
 import { initialState, initialValue } from '../../../common/defaultValue';
 import { StepMediatorInterface } from '../../../common/interface';
-// import { PayloadType, InitialValueType } from '../../../common/type';
+import { PayloadType } from '../../../common/type';
 import { defaultPayload } from '../../../common/defaultValue';
 
 const StepMediator: React.FC<StepMediatorInterface> = ({
@@ -11,12 +11,15 @@ const StepMediator: React.FC<StepMediatorInterface> = ({
   value,
   setValue,
 }) => {
-  // @ts-ignore
-  const stepDetail = initialState[`step${step}`];
-  const type = value?.type !== undefined ? value?.type : '';
-  const payload =
+  const stepNumber = `step${step}`;
+  //@ts-ignore
+  const stepDetail = initialState[stepNumber];
+
+  const payload: PayloadType =
     value?.payload !== undefined ? value?.payload : defaultPayload;
-  // @ts-ignore
+
+  const type = value?.type ? value?.type : 'square';
+  //@ts-ignore
   const description = stepDetail.description(type, payload[type]);
 
   const handleNextClick = () => {

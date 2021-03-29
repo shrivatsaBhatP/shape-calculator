@@ -1,19 +1,35 @@
-import { defaultPayload } from './defaultValue';
+import {} from './defaultValue';
+import { Steps, Types } from './enums';
 
-export type StepDetailType = {
-  id: number;
-  stepName: string;
-  submitValue: string;
-  description: (type: string | undefined, value: any) => string;
+// export type StepDetailType = {
+//   id: number;
+//   stepName: string;
+//   submitValue: string;
+//   description: (type: string | undefined, value: any) => string;
+// };
+
+// type initialState = {
+//   step1: StepDetailType;
+//   step2: StepDetailType;
+//   step3: StepDetailType;
+// };
+
+const stepDetail = {
+  id: 0,
+  stepName: '',
+  submitValue: '',
+  description: (type: TypesType, value: ValueType) => '',
 };
 
-type initialState = {
+type StepDetailType = typeof stepDetail;
+export type StepType = 'step1' | 'step2' | 'step3';
+// export type Step = Steps;
+
+export type InitialStateType = {
   step1: StepDetailType;
   step2: StepDetailType;
   step3: StepDetailType;
 };
-
-export type InitialStateType = initialState;
 
 const reactangleValue = { length: 0, breadth: 0 };
 type RectangleData = typeof reactangleValue;
@@ -41,8 +57,16 @@ export type PayloadType = {
   ellipse: EllipseData;
 };
 
+// type Type = 'square' | 'rectangle' | 'circle' | 'ellipse';
+export type TypesType = Types;
+
 export type InitialValueType = {
-  type: string | undefined;
+  type: TypesType;
+  payload: PayloadType;
+};
+
+export type ValueType = {
+  type: TypesType;
   payload: PayloadType;
 };
 

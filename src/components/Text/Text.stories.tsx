@@ -29,6 +29,13 @@ Heading.args = {
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent interdum vehicula sapien non dapibus. Praesent et risus lectus. Vestibulum egestas luctus nisi ac ornare. In accumsan velit non scelerisque feugiat.',
 };
 
+export const Sub_Heading = Template.bind({});
+Sub_Heading.args = {
+  type: 'sub-heading',
+  children:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent interdum vehicula sapien non dapibus. Praesent et risus lectus. Vestibulum egestas luctus nisi ac ornare. In accumsan velit non scelerisque feugiat.',
+};
+
 export const Paragraph = Template.bind({});
 Paragraph.args = {
   type: 'paragraph',

@@ -1,3 +1,5 @@
+import { Types } from './enums';
+
 export const initialState = {
   step1: {
     id: 11,
@@ -34,10 +36,10 @@ export const initialState = {
 };
 
 export const selectionOptions = [
-  { id: 1, value: 'rectangle', label: 'Rectangle' },
-  { id: 2, value: 'circle', label: 'Circle' },
-  { id: 3, value: 'square', label: 'Square' },
-  { id: 4, value: 'ellipse', label: 'Ellipse' },
+  { id: 1, value: Types.RECTANGLE, label: 'Rectangle' },
+  { id: 2, value: Types.CIRCLE, label: 'Circle' },
+  { id: 3, value: Types.SQUARE, label: 'Square' },
+  { id: 4, value: Types.ELLIPSE, label: 'Ellipse' },
 ];
 
 export const defaultPayload = {
@@ -48,6 +50,11 @@ export const defaultPayload = {
 };
 
 export const initialValue = {
-  type: undefined,
-  payload: defaultPayload,
+  type: Types.RECTANGLE,
+  payload: {
+    rectangle: { length: 0, breadth: 0 },
+    circle: { diameter: 0 },
+    square: { length: 0 },
+    ellipse: { axisA: 0, axisB: 0 },
+  },
 };

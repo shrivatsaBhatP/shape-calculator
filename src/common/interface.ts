@@ -1,4 +1,23 @@
+import { InputTypes } from './enums';
 import { InitialValueType, SelectionOptionType, PayloadType } from './type';
+
+export interface ChildrenProps {
+  children:
+    | JSX.Element
+    | JSX.Element[]
+    | React.ReactNode
+    | React.ReactChild
+    | React.ReactChildren
+    | React.ReactChild[]
+    | React.ReactChildren[];
+}
+
+export interface StepProviderProps {
+  step: number;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+  value: InitialValueType;
+  setValue: React.Dispatch<React.SetStateAction<InitialValueType>>;
+}
 
 export interface StepDetailInterface {
   stepNumber: number | undefined;
@@ -14,6 +33,17 @@ export interface ButtonProps {
   btnStyle?: 'primary' | 'secondary';
 }
 
+export interface InputProps {
+  type?: InputTypes;
+  value?: string | number | readonly string[];
+  id?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  width?: string;
+  fontSize?: string;
+  color?: string;
+  placeholder?: string;
+}
+
 export interface RadioButtonProps {
   id?: string;
   label?: string;
@@ -27,12 +57,12 @@ export interface TextProps {
   children?: React.ReactNode;
   color?: string;
   size?: string;
-  type?: 'heading' | 'paragraph' | 'default';
+  type?: 'heading' | 'paragraph' | 'default' | 'sub-heading';
   weight?: number;
 }
 
 export interface CardNavigationInterface {
-  onCancel?: React.MouseEventHandler<HTMLParagraphElement> | undefined;
+  onCancel?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   onClickNext?: () =>
     | void
     | React.MouseEventHandler<HTMLButtonElement>
@@ -48,9 +78,6 @@ export interface StepMediatorInterface {
 }
 
 export interface StepElementInterface {
-  step: number;
-  value: InitialValueType;
-  setValue: React.Dispatch<React.SetStateAction<InitialValueType>>;
   stepName: string;
   description: string;
   onClickNext: () => void;

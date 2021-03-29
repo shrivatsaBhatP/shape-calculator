@@ -2,6 +2,7 @@ import AdVerticalBanner from '../../components/AdVerticalBanner/AdVerticalBanner
 import Header from '../../components/Header';
 import HomeDescriptionBlock from '../../components/HomeDescriptionBlock';
 import UserInteractionCard from '../../components/UserInteractionCard';
+import { Provider } from '../../provider/stepsProvider';
 import styles from './App.module.scss';
 
 function App() {
@@ -10,7 +11,9 @@ function App() {
       <Header />
       <section>
         <HomeDescriptionBlock />
-        <UserInteractionCard />
+        <Provider>
+          <UserInteractionCard />
+        </Provider>
         <AdVerticalBanner />
       </section>
     </div>

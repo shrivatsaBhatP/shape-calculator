@@ -49,11 +49,13 @@ export interface InputProps {
   value?: string | number | readonly string[];
   id?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
   width?: string;
   fontSize?: string;
   color?: string;
   placeholder?: string;
   name?: string;
+  inputRef?: React.LegacyRef<HTMLInputElement>;
 }
 
 export interface UserInputProps extends InputProps {
@@ -84,13 +86,6 @@ export interface CardNavigationInterface {
     | React.MouseEventHandler<HTMLButtonElement>
     | undefined;
   submitLabel: string | undefined;
-}
-
-export interface StepMediatorInterface {
-  step: number;
-  setStep: React.Dispatch<React.SetStateAction<number>>;
-  value: InitialValueType;
-  setValue: React.Dispatch<React.SetStateAction<InitialValueType>>;
 }
 
 export interface StepElementInterface {

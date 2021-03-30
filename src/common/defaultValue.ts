@@ -3,7 +3,6 @@ import { Types } from './enums';
 export const initialState = {
   step1: {
     id: 11,
-    stepNumber: 1,
     stepName: 'Select your shape',
     submitValue: 'Go to step 2',
     description: (type = 'unknown', value: any) =>
@@ -11,14 +10,13 @@ export const initialState = {
   },
   step2: {
     id: 12,
-    stepNumber: 2,
     stepName: 'Insert your values',
     submitValue: 'Go to step 3',
     description: (type = 'unknown', value: any) =>
       `You have selected a <strong>${type}</strong>, please input the required variables.`,
   },
   step3: {
-    id: 12,
+    id: 13,
     stepName: 'Your result',
     submitValue: 'Start over',
     description: (type = 'unknown', value: any) => {

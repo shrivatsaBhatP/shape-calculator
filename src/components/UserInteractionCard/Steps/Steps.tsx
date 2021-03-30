@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import styles from './Steps.module.scss';
 import RadioButton from '../../RadioButton';
 import { SelectionOptionType, PayloadType } from '../../../common/type';
@@ -34,6 +35,23 @@ const StepOne: React.FC<StepsOneInterface> = ({
 };
 
 const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
+  const input1Ref = useRef<HTMLInputElement>(null);
+  const input2Ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (null !== input1Ref.current) {
+      input1Ref.current.focus();
+      input1Ref.current.value = '';
+    }
+  }, [input1Ref]);
+
+  const handdleFocus = () => {
+    if (null !== input2Ref.current) {
+      input2Ref.current.focus();
+      input2Ref.current.value = '';
+    }
+  };
+
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newPayload: PayloadType = { ...value.payload };
     newPayload = {
@@ -54,6 +72,7 @@ const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
         placeholder="text"
         onChange={handleOnChange}
         value={value.payload['circle'].diameter}
+        inputRef={input1Ref}
       />
     </div>
   );
@@ -69,6 +88,7 @@ const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
             placeholder="text"
             onChange={handleOnChange}
             value={value.payload['rectangle'].length}
+            inputRef={input1Ref}
           />
         </div>
         <div className={styles.Container}>
@@ -79,6 +99,8 @@ const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
             placeholder="text"
             onChange={handleOnChange}
             value={value.payload['rectangle'].breadth}
+            inputRef={input2Ref}
+            onFocus={handdleFocus}
           />
         </div>
       </>
@@ -96,6 +118,7 @@ const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
             placeholder="text"
             onChange={handleOnChange}
             value={value.payload['square'].length}
+            inputRef={input1Ref}
           />
         </div>
       </>
@@ -113,6 +136,7 @@ const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
             placeholder="text"
             onChange={handleOnChange}
             value={value.payload['ellipse'].axisA}
+            inputRef={input1Ref}
           />
         </div>
         <div className={styles.Container}>
@@ -123,6 +147,8 @@ const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
             placeholder="text"
             onChange={handleOnChange}
             value={value.payload['ellipse'].axisB}
+            inputRef={input2Ref}
+            onFocus={handdleFocus}
           />
         </div>
       </>

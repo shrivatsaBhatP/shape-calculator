@@ -14,8 +14,10 @@
   img {
     position: absolute;
     right: 0;
-    height: 105%;
+    // height: 105%;
+    height: 10vh;
 
+    width: 60vw;
     z-index: -1;
   }
   @media (max-width: 720px) {

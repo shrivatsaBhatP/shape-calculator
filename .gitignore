@@ -24,3 +24,7 @@ yarn-error.log*
 
 .prettierignore
 */stories
+
+/src/Images/image.stories.tsx
+/src/Images/image.module.scss
+/src/Images/index.tsx

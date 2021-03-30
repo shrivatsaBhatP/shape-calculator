@@ -5,7 +5,7 @@ import UserInteractionCard from '../../components/UserInteractionCard';
 import { Provider } from '../../provider/stepsProvider';
 import styles from './App.module.scss';
 
-function App() {
+const App = () => {
   return (
     <div className={styles.App}>
       <Header />
@@ -18,6 +18,6 @@ function App() {
       </section>
     </div>
   );
-}
+};
 
 export default App;

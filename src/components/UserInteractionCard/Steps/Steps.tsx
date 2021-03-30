@@ -6,6 +6,9 @@ import {
   StepsTwoInterface,
   StepsThreeInterface,
 } from '../../../common/interface';
+import UserInput from '../../UserInput';
+import { InputTypes } from '../../../common/enums';
+import Text from '../../Text';
 
 const StepOne: React.FC<StepsOneInterface> = ({
   handleOptionChange,
@@ -35,7 +38,7 @@ const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
     let newPayload: PayloadType = { ...value.payload };
     newPayload = {
       ...newPayload,
-      //@ts-ignore
+
       [type]: { ...newPayload[type], [e.target?.name]: e.target?.value },
     };
 
@@ -44,10 +47,10 @@ const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
 
   let InputBody = (
     <div className={styles.Container}>
-      <label>Diameter :</label>
-      <input
+      <UserInput
+        label="Diameter :"
         name="diameter"
-        type="number"
+        type={InputTypes.NUMBER}
         placeholder="text"
         onChange={handleOnChange}
         value={value.payload['circle'].diameter}
@@ -59,20 +62,20 @@ const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
     InputBody = (
       <>
         <div className={styles.Container}>
-          <label>Length :</label>
-          <input
+          <UserInput
+            label="Length :"
             name="length"
-            type="number"
+            type={InputTypes.NUMBER}
             placeholder="text"
             onChange={handleOnChange}
             value={value.payload['rectangle'].length}
           />
         </div>
         <div className={styles.Container}>
-          <label>Breadth</label>
-          <input
+          <UserInput
+            label="Breadth :"
             name="breadth"
-            type="number"
+            type={InputTypes.NUMBER}
             placeholder="text"
             onChange={handleOnChange}
             value={value.payload['rectangle'].breadth}
@@ -86,10 +89,10 @@ const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
     InputBody = (
       <>
         <div className={styles.Container}>
-          <label>Length :</label>
-          <input
+          <UserInput
+            label="Length :"
             name="length"
-            type="number"
+            type={InputTypes.NUMBER}
             placeholder="text"
             onChange={handleOnChange}
             value={value.payload['square'].length}
@@ -103,20 +106,20 @@ const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
     InputBody = (
       <>
         <div className={styles.Container}>
-          <label>Axis A :</label>
-          <input
+          <UserInput
+            label="Axis A:"
             name="axisA"
-            type="number"
+            type={InputTypes.NUMBER}
             placeholder="text"
             onChange={handleOnChange}
             value={value.payload['ellipse'].axisA}
           />
         </div>
         <div className={styles.Container}>
-          <label>Axis B :</label>
-          <input
+          <UserInput
+            label="Axis B:"
             name="axisB"
-            type="number"
+            type={InputTypes.NUMBER}
             placeholder="text"
             onChange={handleOnChange}
             value={value.payload['ellipse'].axisB}
@@ -154,7 +157,9 @@ const StepThree: React.FC<StepsThreeInterface> = ({ type, value }) => {
 
   return (
     <div className={styles.ResultContainer}>
-      <p>The Area is {result.toFixed(3)}</p>
+      <Text size={'1.25rem'} weight={600}>
+        The Area is {result.toFixed(2)}
+      </Text>
     </div>
   );
 };

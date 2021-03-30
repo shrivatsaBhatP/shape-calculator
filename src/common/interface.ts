@@ -1,5 +1,10 @@
 import { InputTypes } from './enums';
-import { InitialValueType, SelectionOptionType, PayloadType } from './type';
+import {
+  InitialValueType,
+  SelectionOptionType,
+  PayloadType,
+  TypesType,
+} from './type';
 
 export interface ChildrenProps {
   children:
@@ -17,6 +22,8 @@ export interface StepProviderProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   value: InitialValueType;
   setValue: React.Dispatch<React.SetStateAction<InitialValueType>>;
+  onCancel?: () => void | React.MouseEventHandler<HTMLButtonElement>;
+  onClickNext?: () => void | React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export interface StepDetailInterface {
@@ -25,6 +32,10 @@ export interface StepDetailInterface {
   description: string | undefined;
 }
 
+export interface ImageProps {
+  src?: string;
+  alt?: string;
+}
 export interface ButtonProps {
   children: React.ReactChild | React.ReactChild[] | React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
@@ -42,6 +53,11 @@ export interface InputProps {
   fontSize?: string;
   color?: string;
   placeholder?: string;
+  name?: string;
+}
+
+export interface UserInputProps extends InputProps {
+  label?: string;
 }
 
 export interface RadioButtonProps {
@@ -92,7 +108,7 @@ export interface StepsOneInterface {
 }
 
 export interface StepsTwoInterface {
-  type?: string;
+  type: TypesType;
   value: InitialValueType;
   onChange: (
     e: InitialValueType

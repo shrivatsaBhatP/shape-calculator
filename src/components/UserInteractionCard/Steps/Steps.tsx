@@ -184,10 +184,14 @@ const StepThree: React.FC<StepsThreeInterface> = ({ type, value }) => {
   return (
     <div className={styles.ResultContainer}>
       <Text size={'1.25rem'} weight={600}>
-        The Area is {result.toFixed(2)}
+        The Area is {formateResult(result)}
       </Text>
     </div>
   );
 };
+
+function formateResult(result: number) {
+  return result % 1 ? result.toFixed(2) : result;
+}
 
 export { StepOne, StepTwo, StepThree };

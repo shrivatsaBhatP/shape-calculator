@@ -1,21 +1,19 @@
 import React from 'react';
 import StepElement from './StepElement';
 import { StepProviderProps } from '../../common/interface';
-import { StepType, TypesType } from '../../common/type';
+import { PayloadType, StepType, TypesType } from '../../common/type';
 import { initialState, initialValue } from '../../common/defaultValue';
 import { defaultPayload } from '../../common/defaultValue';
 import { useStep } from '../../hooks/useStep';
 import styles from './UserInteractionCard.module.scss';
-import { Steps } from '../../common/enums';
+import { Steps, Types } from '../../common/enums';
 
 function Step(strings: Object, step: number): StepType {
-  if (step === 2) return Steps.STEP2;
-  if (step === 3) return Steps.STEP3;
-  return Steps.STEP1;
+  return step === 3 ? Steps.STEP3 : step === 2 ? Steps.STEP2 : Steps.STEP1;
 }
 
-function isValidValue(step: number, type: string, value: any) {
-  const isNotEmpty = (ele: any) => ele[1] === '';
+function isValidValue(step: number, type: Types, value: PayloadType) {
+  const isNotEmpty = (ele: [string, number]) => ele[1] === null;
 
   if (step === 1 && !type) return true;
   if (step === 2 && Object.entries(value[type]).every(isNotEmpty)) return true;

@@ -63,127 +63,127 @@ const StepTwo: React.FC<StepsTwoInterface> = ({ type, value, onChange }) => {
     onChange({ ...value, payload: newPayload });
   };
 
-  let InputBody = (
-    <div className={styles.Container}>
-      <UserInput
-        label="Diameter :"
-        name="diameter"
-        type={InputTypes.NUMBER}
-        placeholder="text"
-        onChange={handleOnChange}
-        value={value.payload['circle'].diameter}
-        inputRef={input1Ref}
-      />
-    </div>
-  );
+  const InputBody =
+    {
+      circle: function () {
+        return (
+          <div className={styles.Container}>
+            <UserInput
+              label="Diameter :"
+              name="diameter"
+              type={InputTypes.NUMBER}
+              placeholder="text"
+              onChange={handleOnChange}
+              value={value.payload['circle'].diameter}
+              inputRef={input1Ref}
+            />
+          </div>
+        );
+      },
+      rectangle: function () {
+        return (
+          <>
+            <div className={styles.Container}>
+              <UserInput
+                label="Length :"
+                name="length"
+                type={InputTypes.NUMBER}
+                placeholder="text"
+                onChange={handleOnChange}
+                value={value.payload['rectangle'].length}
+                inputRef={input1Ref}
+              />
+            </div>
+            <div className={styles.Container}>
+              <UserInput
+                label="Breadth :"
+                name="breadth"
+                type={InputTypes.NUMBER}
+                placeholder="text"
+                onChange={handleOnChange}
+                value={value.payload['rectangle'].breadth}
+                inputRef={input2Ref}
+                onFocus={handdleFocus}
+              />
+            </div>
+          </>
+        );
+      },
+      square: function () {
+        return (
+          <>
+            <div className={styles.Container}>
+              <UserInput
+                label="Length :"
+                name="length"
+                type={InputTypes.NUMBER}
+                placeholder="text"
+                onChange={handleOnChange}
+                value={value.payload['square'].length}
+                inputRef={input1Ref}
+              />
+            </div>
+          </>
+        );
+      },
+      ellipse: function () {
+        return (
+          <>
+            <div className={styles.Container}>
+              <UserInput
+                label="Axis A:"
+                name="axisA"
+                type={InputTypes.NUMBER}
+                placeholder="text"
+                onChange={handleOnChange}
+                value={value.payload['ellipse'].axisA}
+                inputRef={input1Ref}
+              />
+            </div>
+            <div className={styles.Container}>
+              <UserInput
+                label="Axis B:"
+                name="axisB"
+                type={InputTypes.NUMBER}
+                placeholder="text"
+                onChange={handleOnChange}
+                value={value.payload['ellipse'].axisB}
+                inputRef={input2Ref}
+                onFocus={handdleFocus}
+              />
+            </div>
+          </>
+        );
+      },
+    }[type]() || null;
 
-  if (type === 'rectangle') {
-    InputBody = (
-      <>
-        <div className={styles.Container}>
-          <UserInput
-            label="Length :"
-            name="length"
-            type={InputTypes.NUMBER}
-            placeholder="text"
-            onChange={handleOnChange}
-            value={value.payload['rectangle'].length}
-            inputRef={input1Ref}
-          />
-        </div>
-        <div className={styles.Container}>
-          <UserInput
-            label="Breadth :"
-            name="breadth"
-            type={InputTypes.NUMBER}
-            placeholder="text"
-            onChange={handleOnChange}
-            value={value.payload['rectangle'].breadth}
-            inputRef={input2Ref}
-            onFocus={handdleFocus}
-          />
-        </div>
-      </>
-    );
-  }
-
-  if (type === 'square') {
-    InputBody = (
-      <>
-        <div className={styles.Container}>
-          <UserInput
-            label="Length :"
-            name="length"
-            type={InputTypes.NUMBER}
-            placeholder="text"
-            onChange={handleOnChange}
-            value={value.payload['square'].length}
-            inputRef={input1Ref}
-          />
-        </div>
-      </>
-    );
-  }
-
-  if (type === 'ellipse') {
-    InputBody = (
-      <>
-        <div className={styles.Container}>
-          <UserInput
-            label="Axis A:"
-            name="axisA"
-            type={InputTypes.NUMBER}
-            placeholder="text"
-            onChange={handleOnChange}
-            value={value.payload['ellipse'].axisA}
-            inputRef={input1Ref}
-          />
-        </div>
-        <div className={styles.Container}>
-          <UserInput
-            label="Axis B:"
-            name="axisB"
-            type={InputTypes.NUMBER}
-            placeholder="text"
-            onChange={handleOnChange}
-            value={value.payload['ellipse'].axisB}
-            inputRef={input2Ref}
-            onFocus={handdleFocus}
-          />
-        </div>
-      </>
-    );
-  }
   return <>{InputBody}</>;
 };
 
 const StepThree: React.FC<StepsThreeInterface> = ({ type, value }) => {
-  let result = 0;
-  switch (type) {
-    case 'rectangle':
-      result = value['rectangle'].length * value['rectangle'].breadth;
-
-      break;
-    case 'square':
-      result = value['square'].length * value['square'].length;
-
-      break;
-    case 'circle':
-      result =
-        Math.PI *
-        (value['circle'].diameter / 2) *
-        (value['circle'].diameter / 2);
-
-      break;
-    case 'ellipse':
-      result = Math.PI * value['ellipse'].axisA * value['ellipse'].axisB;
-
-      break;
-  }
+  const result =
+    {
+      rectangle: function () {
+        return value['rectangle'].length * value['rectangle'].breadth;
+      },
+      square: function () {
+        return value['square'].length * value['square'].length;
+      },
+      circle: function () {
+        return (
+          Math.PI *
+          (value['circle'].diameter / 2) *
+          (value['circle'].diameter / 2)
+        );
+      },
+      ellipse: function () {
+        return Math.PI * value['ellipse'].axisA * value['ellipse'].axisB;
+      },
+    }[type]() || 0;
 
   return (
     <div className={styles.ResultContainer}>
-      <Text size={'1.25rem'} weight={600}>
+      <Text type="default" size={'1.25rem'} weight={600}>
         The Area is {formateResult(result)}
       </Text>
     </div>

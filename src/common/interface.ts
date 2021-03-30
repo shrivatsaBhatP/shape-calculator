@@ -22,8 +22,6 @@ export interface StepProviderProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   value: InitialValueType;
   setValue: React.Dispatch<React.SetStateAction<InitialValueType>>;
-  onCancel?: () => void | React.MouseEventHandler<HTMLButtonElement>;
-  onClickNext?: () => void | React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export interface StepDetailInterface {
@@ -33,8 +31,8 @@ export interface StepDetailInterface {
 }
 
 export interface ImageProps {
-  src?: string;
-  alt?: string;
+  src: string;
+  alt: string;
 }
 export interface ButtonProps {
   children: React.ReactChild | React.ReactChild[] | React.ReactNode;
@@ -48,7 +46,7 @@ export interface InputProps {
   type?: InputTypes;
   value?: string | number | readonly string[];
   id?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   width?: string;
   fontSize?: string;
@@ -68,14 +66,14 @@ export interface RadioButtonProps {
   name?: string;
   value?: string | number | readonly string[];
   isChecked?: boolean;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
 }
 
 export interface TextProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   color?: string;
   size?: string;
-  type?: 'heading' | 'paragraph' | 'default' | 'sub-heading';
+  type: 'heading' | 'paragraph' | 'default' | 'sub-heading';
   weight?: number;
 }
 
@@ -111,6 +109,6 @@ export interface StepsTwoInterface {
 }
 
 export interface StepsThreeInterface {
-  type?: string;
+  type: TypesType;
   value: PayloadType;
 }

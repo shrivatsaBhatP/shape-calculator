@@ -21,7 +21,7 @@ const CardNavigation = ({
       {userData.step !== 3 ? (
         <span>
           or
-          <Button btnStyle="secondary" onClick={onCancel}>
+          <Button btnStyle="secondary" onClick={onCancel} type="submit">
             Cancel
           </Button>
         </span>

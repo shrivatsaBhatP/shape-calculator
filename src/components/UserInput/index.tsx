@@ -7,7 +7,9 @@ import Text from '../Text';
 const UserInput: React.FC<UserInputProps> = ({ label, ...props }) => {
   return (
     <div className={styles.Container}>
-      <Text weight={600}>{label}</Text>
+      <Text type="default" weight={600}>
+        {label}
+      </Text>
       <Input {...props} />
     </div>
   );

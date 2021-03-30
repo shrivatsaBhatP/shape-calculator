@@ -14,8 +14,8 @@ import { StepOne, StepTwo, StepThree } from '../Steps';
 
 function Type(strings: Object, type: string): TypesType {
   if (type === Types.CIRCLE) return Types.CIRCLE;
-  if (type === Types.ELLIPSE) return Types.ELLIPSE;
   if (type === Types.SQUARE) return Types.SQUARE;
+  if (type === Types.ELLIPSE) return Types.ELLIPSE;
   return Types.RECTANGLE;
 }
 
@@ -26,40 +26,34 @@ const StepElement = ({
   onClickNext,
   onCancel,
 }: StepElementInterface) => {
-  const useData: StepProviderProps = useStep();
+  const userData: StepProviderProps = useStep();
 
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue: string = e.target.value;
-    useData.setValue({ ...useData.value, type: Type`${newValue}` });
+    userData.setValue({ ...userData.value, type: Type`${newValue}` });
   };
 
-  let body = (
-    <StepOne
-      handleOptionChange={handleOptionChange}
-      selectionOptions={selectionOptions}
-      selectedOption={useData.value?.type}
-    />
-  );
-
-  if (useData.step === 2) {
-    body = (
+  const USER_INPUT_BODY =
+    userData.step === 3 ? (
+      <StepThree type={userData.value.type} value={userData.value.payload} />
+    ) : userData.step === 2 ? (
       <StepTwo
-        type={useData.value.type}
-        onChange={useData.setValue}
-        value={useData.value}
+        type={userData.value.type}
+        onChange={userData.setValue}
+        value={userData.value}
+      />
+    ) : (
+      <StepOne
+        handleOptionChange={handleOptionChange}
+        selectionOptions={selectionOptions}
+        selectedOption={userData.value?.type}
       />
     );
-  }
 
-  if (useData.step === 3) {
-    body = (
-      <StepThree type={useData.value.type} value={useData.value.payload} />
-    );
-  }
   return (
     <>
       <StepDetail
-        stepNumber={useData.step}
+        stepNumber={userData.step}
         stepName={stepName}
         description={description}
       />
@@ -68,7 +62,7 @@ const StepElement = ({
         onSubmit={(e) => {
           e.preventDefault();
         }}>
-        {body}
+        {USER_INPUT_BODY}
       </form>
       <CardNavigation
         onClickNext={onClickNext}

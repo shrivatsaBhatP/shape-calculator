@@ -1,18 +1,4 @@
-import {} from './defaultValue';
-import { Steps, Types } from './enums';
-
-// export type StepDetailType = {
-//   id: number;
-//   stepName: string;
-//   submitValue: string;
-//   description: (type: string | undefined, value: any) => string;
-// };
-
-// type initialState = {
-//   step1: StepDetailType;
-//   step2: StepDetailType;
-//   step3: StepDetailType;
-// };
+import { Types } from './enums';
 
 const stepDetail = {
   id: 0,
@@ -23,7 +9,6 @@ const stepDetail = {
 
 type StepDetailType = typeof stepDetail;
 export type StepType = 'step1' | 'step2' | 'step3';
-// export type Step = Steps;
 
 export type InitialStateType = {
   step1: StepDetailType;
@@ -57,7 +42,6 @@ export type PayloadType = {
   ellipse: EllipseData;
 };
 
-// type Type = 'square' | 'rectangle' | 'circle' | 'ellipse';
 export type TypesType = Types;
 
 export type InitialValueType = {

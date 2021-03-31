@@ -14,7 +14,7 @@ const App = () => {
         <Provider>
           <UserInteractionCard />
         </Provider>
-        <AdVerticalBanner />
+        <AdVerticalBanner>{null}</AdVerticalBanner>
       </section>
     </div>
   );

@@ -1,9 +1,10 @@
+import { ChildrenProps } from '../../common/interface';
 import styles from './AdVerticalBanner.module.scss';
 
-function AdVerticalBanner() {
+function AdVerticalBanner({ children }: ChildrenProps) {
   return (
     <div className={styles.Container}>
-      <p>{`120 x 240 Ad(Vertical Banner)`}</p>
+      {children ? children : <p>{`120 x 240 Ad(Vertical Banner)`}</p>}
     </div>
   );
 }

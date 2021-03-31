@@ -23,25 +23,4 @@ const Input: React.FC<InputProps> = ({ type, ...props }) => {
   );
 };
 
-// const Input = React.forwardRef<HTMLInputElement>((ref,props)=>{
-//   const style: React.CSSProperties = {
-//     width: props.width,
-//     fontSize: props.fontSize,
-//     color: props.color,
-//   };
-
-//   return (
-//     <>
-//       <input
-//         type={type}
-//         className={[styles.Input].join(' ')}
-//         value={props.value}
-//         style={style}
-//         ref={ref}
-//         {...props}
-//       />
-//     </>
-//   );
-// });
-
 export default Input;

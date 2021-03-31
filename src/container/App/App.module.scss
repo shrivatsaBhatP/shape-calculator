@@ -1,23 +1,9 @@
 .App {
   max-width: 95vw;
-  // margin: auto;
-  // section {
-  //   width: 100%;
-  // }
-
-  // @media (min-width: 1440px) {
-  //   width: 90%;
-  //   // max-width: 1080px;
-  //   section {
-  //     display: grid;
-  //     place-items: center;
-  //     grid-template-columns: 2fr 2fr 1fr;
-  //     grid-column: auto;
-  //   }
-  // }
   display: grid;
   place-items: center;
   margin: auto;
+
   section {
     width: 95%;
     height: 90%;
